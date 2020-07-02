@@ -12,7 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('layouts/template');
+    return view('/datatable/index');
+});
+
+Route::get('/data-tables', function () {
+    return view('/datatable/datatable');
 });
 
 // Master Template
