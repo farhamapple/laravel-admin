@@ -6,12 +6,12 @@
         <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-            <h1>Items Page</h1>
+            <h1>Questions Page</h1>
             </div>
             <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Master</a></li>
-                <li class="breadcrumb-item active">Items</li>
+                <li class="breadcrumb-item active">Questions</li>
             </ol>
             </div>
         </div>
@@ -22,31 +22,21 @@
 
         <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Create Item</h3>
+              <h3 class="card-title">Create Question</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form role="form" action="/items" method="POST">
+            <form role="form" action="/pertanyaan" method="POST">
                 @csrf
               <div class="card-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Name Item</label>
-                  <input type="text" class="form-control" name='name'>
+                  <label for="exampleInputEmail1">Title</label>
+                  <input type="text" class="form-control" name='title'>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Description</label>
-                  <textarea class="form-control" name='description'></textarea>
+                  <textarea class="form-control" name='question'></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Stock</label>
-                    <input type="text" class="form-control" name='stock'>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Price</label>
-                    <input type="text" class="form-control" name='price'>
-                </div>
-
-
 
               </div>
               <!-- /.card-body -->

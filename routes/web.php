@@ -24,11 +24,14 @@ Route::get('/master', function () {
     return view('master');
 });
 
-Route::get('/items', function () {
+// Items
+Route::get('/items','ItemContoller@index');
 
-    return view('items.index');
-});
+Route::get('/items/create', 'ItemContoller@create');
+Route::post('/items','ItemContoller@store');
 
-Route::get('/items/create', function () {
-    return view('items.create');
-});
+Route::get('/pertanyaan','QuestionController@index');
+Route::get('/pertanyaan/create', 'QuestionController@create');
+Route::post('/pertanyaan','QuestionController@store');
+
+Route::get('/jawaban/{pertanyaan_id}','AnswerController@index');
