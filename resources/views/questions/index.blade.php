@@ -33,6 +33,7 @@
             </div>
           </div>
           <div class="card-body">
+
             <a href='/pertanyaan/create' class="btn btn-primary btn-md">Create Question</a>
             <br>
             <br>
@@ -53,9 +54,14 @@
                             <td>{{ $question->title }}</td>
                             <td>{{ $question->question }}</td>
                             <td>
-                                <a href='/jawaban/{{ $question->id }}' class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>
-                                <a href='#' class="btn btn-sm btn-warning"><i class="fa fa-comments"></i></a>
-                                <a href='#' class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+
+                                @if ($question->answer!=NULL)
+                                    <a href='#' class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="left" title="Ubah Jawaban"><i class="fa fa-comments"></i></a>
+                                    <a href='/jawaban/{{ $question->id }}' class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="top" title="Lihat Jawaban"><i class="fa fa-eye"></i></a>
+                                    <a href='#' class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="right" title="Hapus Jawaban"><i class="fa fa-trash"></i></a>
+                                @else
+                                <a href='/jawaban/create/{{ $question->id }}' class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Isi Jawaban"><i class="fa fa-comments"></i></a>
+                                @endif
                             </td>
                             <td>
                                 <a href='#' class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
@@ -78,3 +84,11 @@
       </section>
       <!-- /.content -->
 @endsection
+
+@push('scripts')
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+@endpush

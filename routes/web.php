@@ -35,3 +35,5 @@ Route::get('/pertanyaan/create', 'QuestionController@create');
 Route::post('/pertanyaan','QuestionController@store');
 
 Route::get('/jawaban/{pertanyaan_id}','AnswerController@index');
+Route::get('/jawaban/create/{pertanyaan_id}','AnswerController@create');
+Route::post('/jawaban','AnswerController@store');

@@ -11,7 +11,7 @@ class QuestionController extends Controller
 
     public function index(){
        $questions = QuestionsModel::get_all();
-      // dd($questions);
+       //dd($questions);
         return view('questions.index', compact('questions'));
     }
 
@@ -20,12 +20,17 @@ class QuestionController extends Controller
     }
 
     public function store(Request $request){
+        $this->validate($request,[
+            'title' => 'required|min:3',
+            'question' => 'required'
+        ]);
         $data = $request->all();
        unset($data['_token']);
 
        $question = QuestionsModel::save($data);
        if($question){
-            return view('questions.index');
+            //return view('questions.index')->with('success', 'Pertanyaan berhasil dibuat');
+            return redirect()->back()->with('success', 'Pertanyaan berhasil dibuat');
        }
     }
 }
