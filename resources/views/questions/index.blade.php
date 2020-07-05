@@ -58,14 +58,23 @@
                                 @if ($question->answer!=NULL)
                                     <a href='#' class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="left" title="Ubah Jawaban"><i class="fa fa-comments"></i></a>
                                     <a href='/jawaban/{{ $question->id }}' class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="top" title="Lihat Jawaban"><i class="fa fa-eye"></i></a>
-                                    <a href='#' class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="right" title="Hapus Jawaban"><i class="fa fa-trash"></i></a>
-                                @else
+                                    <form action="/jawaban/{{$question->answer_id}}" method="POST" style="display: inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="right" title="Hapus Jawaban"><i class="fa fa-trash"></i></button>
+                                    </form>
+                                    @else
                                 <a href='/jawaban/create/{{ $question->id }}' class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Isi Jawaban"><i class="fa fa-comments"></i></a>
                                 @endif
                             </td>
                             <td>
-                                <a href='#' class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
-                                <a href='#' class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                <a href='/pertanyaan/{{$question->id}}/edit' class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+                                <form action="/pertanyaan/{{$question->id}}" method="POST" style="display: inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                </form>
+
                             </td>
                         </tr>
                     @endforeach

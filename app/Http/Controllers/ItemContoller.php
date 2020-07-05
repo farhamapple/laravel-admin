@@ -31,4 +31,25 @@ class ItemContoller extends Controller
             return view('items.index');
        }
     }
+
+    public function edit($id){
+
+        $item = ItemsModel::find_by_id($id);
+
+        return view('items.edit', compact('item'));
+    }
+
+    public function update($id, Request $request){
+
+        //dd($request->all());
+        $item = ItemsModel::update($id, $request->all());
+
+        return redirect('/items');
+    }
+
+    public function destroy($id){
+        $deleted = ItemsModel::destroy($id);
+
+        return redirect('/items');
+    }
 }

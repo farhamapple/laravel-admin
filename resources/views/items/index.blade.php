@@ -56,8 +56,13 @@
                             <td>{{ $item->stock }}</td>
                             <td>{{ $item->price }}</td>
                             <td>
-                                <a href='#' class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
-                                <a href='#' class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                            <a href='/items/{{$item->id}}/edit' class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+                            <form action="/items/{{$item->id}}" method="POST" style="display: inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                            </form>
+
                             </td>
                         </tr>
                     @endforeach

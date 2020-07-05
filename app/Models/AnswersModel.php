@@ -22,4 +22,10 @@ class AnswersModel{
         return $answer;
     }
 
+    public static function destroy($id){
+        $deleted_item = DB::table('answers')->where('id', $id)->delete();
+
+        return $deleted_item;
+    }
+
 }

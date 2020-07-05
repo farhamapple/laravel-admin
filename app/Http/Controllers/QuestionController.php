@@ -33,4 +33,25 @@ class QuestionController extends Controller
             return redirect()->back()->with('success', 'Pertanyaan berhasil dibuat');
        }
     }
+
+    public function edit($id){
+
+        $question = QuestionsModel::find_by_id($id);
+
+        return view('questions.edit', compact('question'));
+    }
+
+    public function update($id, Request $request){
+
+        //dd($request->all());
+        $item = QuestionsModel::update($id, $request->all());
+
+        return redirect('/pertanyaan');
+    }
+
+    public function destroy($id){
+        $deleted = QuestionsModel::destroy($id);
+
+        return redirect('/pertanyaan');
+    }
 }

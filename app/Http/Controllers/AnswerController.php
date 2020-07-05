@@ -28,8 +28,14 @@ class AnswerController extends Controller
 
        $answer = AnswersModel::save($data);
        if($answer){
-            return view('questions.index');
+            return redirect('/pertanyaan');
        }
+    }
+
+    public function destroy($id){
+        $deleted = AnswersModel::destroy($id);
+
+        return redirect('/pertanyaan');
     }
 
 }
